@@ -1,15 +1,12 @@
 package cn.wzvtc.soft;
 
 import org.omg.CORBA.ORB;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-//@CrossOrigin
+@CrossOrigin
 @RestController("/" )
 public class TestController {
 
@@ -17,8 +14,18 @@ public class TestController {
     @RequestMapping(value="/data.json")
     public Map<String,String> bookById(){
         Map<String,String> resultMap=new HashMap<>();
-        resultMap.put("myname","刘笑锋1");
-        resultMap.put("mynumber","2012020045");
+        resultMap.put("myname","苏圣扬");
+        resultMap.put("mynumber","28002090131");
+        return resultMap;
+    }
+    @RequestMapping(value="/login")
+    public Map<String,String> login(@RequestBody Map<String,String> map){
+        String password=map.get("password");
+        String number=map.get("number");
+        Map<String,String> resultMap=new HashMap<>();
+        if("28002090131".equals(number) && "28002090131".equals(password)){
+            resultMap.put("result","success");
+        }
         return resultMap;
     }
 }
